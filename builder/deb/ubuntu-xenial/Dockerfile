@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -y install \
   bison \
   debhelper \
   devscripts \
+  dh-systemd \
   dpkg-dev \
   curl \
   git \

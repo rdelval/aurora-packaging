@@ -1,4 +1,5 @@
 #!/bin/bash
+# Starts up a Thermos observer process.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,29 +12,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-set -ex
 
-mkdir /scratch
-cd /scratch
+source /etc/default/thermos
 
-tar --strip-components 1 -C . -xf /src.tar.gz
-
-mkdir /debian
-cp -R /specs/debian_systemd ./debian
-
-export DEBFULLNAME='Apache Aurora'
-export DEBEMAIL='dev@aurora.apache.org'
-
-dch \
-  --newversion $AURORA_VERSION \
-  --package apache-aurora \
-  --urgency medium \
-  "Apache Aurora package builder <dev@aurora.apache.org> $(date -R)"
-dch --release ''
-
-dpkg-buildpackage -uc -b -tc
-
-mkdir /dist
-mv ../*.deb /dist
+exec /usr/bin/thermos_observer "${OBSERVER_ARGS[@]}"
