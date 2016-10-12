@@ -20,8 +20,8 @@ Environment="OBSERVER_PORT=1338"
 Environment="MESOS_ROOT=/var/lib/mesos"
 EnvironmentFile=-/etc/default/thermos
 ExecStart=/usr/sbin/thermos_observer \
-   --port=${OBSERVER_PORT:-1338} \
-   --mesos-root=${MESOS_ROOT:-/var/lib/mesos} \
+   --port=${OBSERVER_PORT} \
+   --mesos-root=${MESOS_ROOT} \
    --log_to_disk=NONE \
    --log_to_stderr=google:INFO
 User=root

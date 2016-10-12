@@ -17,7 +17,7 @@ for installing released packages or release candidate packages.
 
     # Install each deb
     vagrant ssh -- -L8081:localhost:8081 -L1338:localhost:1338
-    sudo dpkg -i *.deb
+    sudo dpkg -i aurora*.deb thermos*.deb
 
 ### Released
 
@@ -35,6 +35,10 @@ for installing released packages or release candidate packages.
 ## Initialize and start
 
 The replicated log has to be initialized manually:
+
+    # Stop services first
+    sudo systemctl stop aurora-scheduler
+    sudo systemctl stop thermos
 
     sudo -u aurora mkdir -p /var/lib/aurora/scheduler/db
     sudo -u aurora mesos-log initialize --path=/var/lib/aurora/scheduler/db

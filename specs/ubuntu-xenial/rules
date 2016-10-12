@@ -41,11 +41,7 @@ __pants_build:
 	$(pants) binary src/main/python/apache/thermos/runner:thermos_runner
 	build-support/embed_runner_in_executor.py
 
-override_dh_installinit:
-	dh_installinit --name=thermos
-	dh_installinit
-
 override_dh_auto_install:
-		dh_auto_install
-		# Install start up script for aurora-scheduler
-		install -D -m 0755 $(TMP)/aurora-scheduler.startup.sh $(TMP)/aurora-scheduler/usr/bin/aurora-scheduler-startup
+	dh_auto_install
+	# Install start up script for aurora-scheduler
+	install -D -m 0755 $(TMP)/aurora-scheduler.startup.sh $(TMP)/aurora-scheduler/usr/bin/aurora-scheduler-startup

@@ -47,7 +47,7 @@ Description: Apache Aurora commandline tools
  This package includes the aurora and aurora-admin commandline utilities for
  interacting with an Aurora scheduler.
 
-Package: aurora-executor
+Package: thermos
 Architecture: any
 Section: net
 Replaces: aurora-mesos-slave

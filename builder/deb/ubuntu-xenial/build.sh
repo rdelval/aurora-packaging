@@ -21,7 +21,7 @@ cd /scratch
 tar --strip-components 1 -C . -xf /src.tar.gz
 
 mkdir /debian
-cp -R /specs/debian_systemd ./debian
+cp -R /specs/ubuntu-xenial ./debian
 
 export DEBFULLNAME='Apache Aurora'
 export DEBEMAIL='dev@aurora.apache.org'
