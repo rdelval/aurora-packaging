@@ -16,8 +16,11 @@ After=network.target
 Wants=network.target
 
 [Service]
-# Follows the RPM script, maybe we should place this elsewhere
-ExecStart=/usr/bin/aurora-scheduler-startup
+Type=forking
+IgnoreSIGPIPE=no
+GuessMainPID=no
+ExecStart=/etc/init.d/aurora-scheduler start
+ExecStop=/etc/init.d/aurora-scheduler stop
 User=aurora
 Group=aurora
 Restart=always
