@@ -16,13 +16,12 @@ After=network.target
 Wants=network.target
 
 [Service]
+Environment="OBSERVER_PORT=1338"
+Environment="MESOS_ROOT=/var/lib/mesos"
 EnvironmentFile=-/etc/default/thermos
-#ExecStart=/usr/bin/thermos-startup
 ExecStart=/usr/sbin/thermos_observer \
    --port=${OBSERVER_PORT:-1338} \
    --mesos-root=${MESOS_ROOT:-/var/lib/mesos} \
-   --app_daemonize \
-   --app_pidfile=$PIDFILE \
    --log_to_disk=NONE \
    --log_to_stderr=google:INFO
 User=root
