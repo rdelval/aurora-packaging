@@ -47,6 +47,5 @@ override_dh_installinit:
 
 override_dh_auto_install:
 		dh_auto_install
-		ls $(TMP)
+		# Install start up script for aurora-scheduler
 		install -D -m 0755 $(TMP)/aurora-scheduler.startup.sh $(TMP)/aurora-scheduler/usr/bin/aurora-scheduler-startup
-#		install -D -m 0755 $(TMP)/aurora-executor.thermos.startup.sh $(TMP)/aurora-executor/usr/bin/thermos-startup
