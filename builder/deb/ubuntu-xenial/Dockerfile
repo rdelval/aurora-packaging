@@ -16,6 +16,7 @@ WORKDIR /aurora
 ENV HOME /aurora
 ENV DEBIAN_FRONTEND noninteractive
 
+# Using gcc-4.8 to ensure ABI for thermos in containers running older distros
 RUN apt-get update && apt-get -y install \
   bison \
   debhelper \
@@ -24,6 +25,7 @@ RUN apt-get update && apt-get -y install \
   dpkg-dev \
   curl \
   git \
+  gcc-4.8 \
   libapr1-dev \
   libcurl4-openssl-dev \
   libsvn-dev \
