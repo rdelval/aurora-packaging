@@ -23,7 +23,7 @@ for installing released packages or release candidate packages.
 
     vagrant ssh -- -L8081:localhost:8081 -L1338:localhost:1338
     version=0.15.0
-    pkg_root="https://apache.bintray.com/aurora/ubuntu-trusty/"
+    pkg_root="https://apache.bintray.com/aurora/ubuntu-xenial/"
     for deb in \
         aurora-scheduler_${version}_amd64.deb \
         aurora-executor_${version}_amd64.deb \
