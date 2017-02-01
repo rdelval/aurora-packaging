@@ -20,8 +20,19 @@ cd /scratch
 
 tar --strip-components 1 -C . -xf /src.tar.gz
 
-mkdir /debian
-cp -R /specs/ubuntu-xenial ./debian
+cp -R /specs/debian .
+
+# Xenial tries to convert init scripts before systemd units
+# avoid conflict by not including them for now
+rm ./debian/*.upstart ./debian/*.init
+
+DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
+CODENAME=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
+THIRD_PARTY_REPO="https://svn.apache.org/repos/asf/aurora/3rdparty/"
+THIRD_PARTY_REPO+="${DISTRO}/${CODENAME}64/python/"
+
+# Place the link to the correct python egg into aurora-pants.ini
+echo "repos: ['third_party/', '${THIRD_PARTY_REPO}']" >> ./debian/aurora-pants.ini
 
 export DEBFULLNAME='Apache Aurora'
 export DEBEMAIL='dev@aurora.apache.org'
