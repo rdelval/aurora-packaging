@@ -28,6 +28,7 @@ RUN echo \
 RUN apt-get update && apt-get -y install \
   bison \
   debhelper \
+  dh-systemd \
   devscripts \
   dpkg-dev \
   curl \
