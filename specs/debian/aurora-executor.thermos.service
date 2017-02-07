@@ -16,9 +16,7 @@ After=network.target
 Wants=network.target
 
 [Service]
-Environment="OBSERVER_PORT=1338"
-Environment="MESOS_ROOT=/var/lib/mesos"
-EnvironmentFile=-/etc/default/thermos
+EnvironmentFile=/etc/default/thermos
 ExecStart=/usr/sbin/thermos_observer \
    --port=${OBSERVER_PORT} \
    --mesos-root=${MESOS_ROOT} \

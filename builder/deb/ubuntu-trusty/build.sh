@@ -25,9 +25,10 @@ cp -R /specs/debian .
 DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 CODENAME=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
 THIRD_PARTY_REPO="https://svn.apache.org/repos/asf/aurora/3rdparty/"
-   THIRD_PARTY_REPO+="${DISTRO}/${CODENAME}64/python/"
+THIRD_PARTY_REPO+="${DISTRO}/${CODENAME}64/python/"
 
 # Place the link to the correct python egg into aurora-pants.ini
+echo "[python-repos]" >> ./debian/aurora-pants.ini
 echo "repos: ['third_party/', '${THIRD_PARTY_REPO}']" >> ./debian/aurora-pants.ini
 
 export DEBFULLNAME='Apache Aurora'
