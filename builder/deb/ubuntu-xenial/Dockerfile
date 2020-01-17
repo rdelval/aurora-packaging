@@ -44,9 +44,9 @@ RUN apt-get -y install openjdk-8-jdk \
 RUN git clone --depth 1 https://github.com/benley/gradle-packaging \
   && cd gradle-packaging \
   && apt-get -y install ruby ruby-dev unzip wget \
-  && gem install fpm && ./gradle-mkdeb.sh 4.2 \
+  && gem install fpm && ./gradle-mkdeb.sh 4.10.2 \
   && apt-get -y install gdebi-core \
-  && gdebi --non-interactive gradle-4.2_4.2-2_all.deb \
+  && gdebi --non-interactive gradle-4.10.2_4.10.2-2_all.deb \
   && cd .. && rm -rf gradle-packaging
 
 ADD build.sh /build.sh
